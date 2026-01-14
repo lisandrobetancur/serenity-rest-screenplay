@@ -20,15 +20,11 @@
         <serenity.maven.version>5.1.0</serenity.maven.version>
         <junit.version>6.0.2</junit.version>
         <assertj.version>3.27.6</assertj.version>
-        <hamcrest.version>3.0</hamcrest.version>
         <lombok.version>1.18.36</lombok.version>
         <goole_guava.version>33.5.0-jre</goole_guava.version>
         <slf4j.version>1.7.7</slf4j.version>
-        <postgresql.version>42.7.8</postgresql.version>
-        <hibernate.version>7.2.0.Final</hibernate.version>
         <encoding>UTF-8</encoding>
         <parallel.tests>4</parallel.tests>
-        <hibernate.version>7.2.0.Final</hibernate.version>
     </properties>
 
     <repositories>
@@ -125,31 +121,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>${hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -186,6 +161,7 @@
                 <version>3.5.4</version>
                 <configuration>
                     <includes>
+                        <include>**/*Runner.java</include>
                         <include>**/*Test.java</include>
                         <include>**/features/**/*.java</include>
                         <include>**/*Test*.java</include>

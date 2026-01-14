@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
 /** A Serenity BDD Question to retrieve the last created booking from the API response. */
-public class QuestionGetBooking implements Question {
+public class QuestionGetBooking implements Question<Booking> {
   /**
    * Extracts the Booking object from the last RESTAssured response.
    *

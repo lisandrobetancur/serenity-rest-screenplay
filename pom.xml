@@ -18,7 +18,7 @@
         <java.version>21</java.version>
         <serenity.version>5.1.0</serenity.version>
         <serenity.maven.version>5.1.0</serenity.maven.version>
-        <jupiter.version>6.0.2</jupiter.version>
+        <junit.version>6.0.2</junit.version>
         <assertj.version>3.27.6</assertj.version>
         <hamcrest.version>3.0</hamcrest.version>
         <lombok.version>1.18.36</lombok.version>
@@ -63,7 +63,7 @@
 
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-junit</artifactId>
+            <artifactId>serenity-junit5</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
@@ -105,8 +105,15 @@
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${jupiter.version}</version>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -240,8 +247,9 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <phase>compile</phase>
                         <goals>
-                            <goal>check</goal>
+                            <goal>apply</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -256,13 +264,13 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <restapi.baseurl>http://localhost:5000/api</restapi.baseurl>
+                <restapi.baseurl>http://localhost:5000/</restapi.baseurl>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
-                <restapi.baseurl>https://reqres.in/api</restapi.baseurl>
+                <restapi.baseurl>https://restful-booker.herokuapp.com/</restapi.baseurl>
             </properties>
         </profile>
     </profiles>

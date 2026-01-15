@@ -9,34 +9,34 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 
 /**
- * A Serenity BDD Task to retrieve pets by their status via a GET request to the "findByStatus"
+ * A Serenity BDD Task to retrieve pets by their status via a GET request to the "pet/findByStatus"
  * endpoint.
  */
-public class TaskFindPet implements Task {
+public class TaskFindPets implements Task {
 
   private final String status;
 
   /**
-   * Constructs a TaskFindPet with the specified status.
+   * Constructs a TaskFindPets with the specified status.
    *
    * @param status The status of the pet to retrieve.
    */
-  public TaskFindPet(String status) {
+  public TaskFindPets(String status) {
     this.status = status;
   }
 
   /**
-   * Static factory method to create an instrumented instance of TaskFindPet.
+   * Static factory method to create an instrumented instance of TaskFindPets.
    *
    * @param status The status of the pets to retrieve.
    * @return An instrumented Performable task to get pets by status.
    */
   public static Performable byStatus(String status) {
-    return instrumented(TaskFindPet.class, status);
+    return instrumented(TaskFindPets.class, status);
   }
 
   /**
-   * Performs the task of retrieving a booking by ID as the given actor.
+   * Performs the task of retrieving pets by status as the given actor.
    *
    * @param actor The actor performing the action.
    * @param <T> The type of the actor.
@@ -44,7 +44,7 @@ public class TaskFindPet implements Task {
   @Override
   public <T extends Actor> void performAs(T actor) {
     actor.attemptsTo(
-        Get.to("findByStatus?status=" + status)
-            .with(requestSpecification -> requestSpecification.contentType(ContentType.JSON)));
+        Get.to("/pet/findByStatus")
+            .with(request -> request.queryParam("status", status).contentType(ContentType.JSON)));
   }
 }

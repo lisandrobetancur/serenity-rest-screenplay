@@ -5,6 +5,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
+import com.co.base.BaseTest;
 import com.co.models.pets.response.Pet;
 import com.co.questions.QuestionGetPets;
 import com.co.questions.QuestionResponseCode;
@@ -17,13 +18,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(SerenityJUnit5Extension.class)
-class PetsTest {
-
-  private static final String REST_API_URL = "https://petstore.swagger.io/v2";
+class PetsTest extends BaseTest {
 
   @Test
   void findPetsByStatus() {
-    Actor user = Actor.named("Juanito the intern").whoCan(CallAnApi.at(REST_API_URL));
+    Actor user = Actor.named("Juanito the intern").whoCan(CallAnApi.at(restApiUrl));
 
     user.attemptsTo(TaskFindPets.byStatus("sold"));
 

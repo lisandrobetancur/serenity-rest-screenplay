@@ -240,7 +240,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <restapi.baseurl>http://localhost:8081/</restapi.baseurl>
+                <restapi.baseurl>https://petstore.swagger.io/v2</restapi.baseurl>
             </properties>
         </profile>
         <profile>

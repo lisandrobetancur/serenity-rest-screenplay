@@ -15,6 +15,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>21</java.version>
         <serenity.version>5.1.0</serenity.version>
         <serenity.maven.version>5.1.0</serenity.maven.version>
@@ -23,7 +24,6 @@
         <lombok.version>1.18.36</lombok.version>
         <goole_guava.version>33.5.0-jre</goole_guava.version>
         <logback.version>1.5.24</logback.version>
-        <encoding>UTF-8</encoding>
         <parallel.tests>4</parallel.tests>
     </properties>
 

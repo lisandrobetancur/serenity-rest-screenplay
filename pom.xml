@@ -246,7 +246,7 @@
         <profile>
             <id>prod</id>
             <properties>
-                <restapi.baseurl>https://petstore.swagger.io/v2/pet/</restapi.baseurl>
+                <restapi.baseurl>https://petstore.swagger.io/v2</restapi.baseurl>
             </properties>
         </profile>
     </profiles>

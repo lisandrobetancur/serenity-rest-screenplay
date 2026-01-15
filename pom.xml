@@ -240,13 +240,13 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <restapi.baseurl>http://localhost:5000/</restapi.baseurl>
+                <restapi.baseurl>http://localhost:8081/</restapi.baseurl>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
-                <restapi.baseurl>https://restful-booker.herokuapp.com/</restapi.baseurl>
+                <restapi.baseurl>https://petstore.swagger.io/v2/pet/</restapi.baseurl>
             </properties>
         </profile>
     </profiles>

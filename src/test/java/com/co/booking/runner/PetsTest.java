@@ -11,11 +11,11 @@ import com.co.models.pets.Tag;
 import com.co.questions.GetPets;
 import com.co.questions.ResponseCode;
 import com.co.tasks.AddPet;
+import com.co.tasks.DeletePet;
 import com.co.tasks.FindPets;
 import com.co.tasks.PartialPetUpdate;
 import com.co.tasks.PetUpdate;
 import com.co.utils.RandomNumber;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
@@ -103,11 +103,17 @@ class PetsTest {
   @Test
   @Order(4)
   void updatePetById() {
-    Map<String, String> params = new HashMap<>();
-    params.put("name", "Checho");
-    params.put("status", "sold");
+    Map<String, String> params = Map.of("name", "Checho", "status", "sold");
 
     intern.attemptsTo(PartialPetUpdate.withPayload(params, 7937L));
+
+    intern.should(seeThat("the status code", ResponseCode.was(), equalTo(SC_OK)));
+  }
+
+  @Test
+  @Order(5)
+  void deletePetById() {
+    intern.attemptsTo(DeletePet.withId(7390L));
 
     intern.should(seeThat("the status code", ResponseCode.was(), equalTo(SC_OK)));
   }

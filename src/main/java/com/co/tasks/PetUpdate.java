@@ -9,16 +9,16 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 
-public class TaskPetUpdate implements Task {
+public class PetUpdate implements Task {
 
   private final Pet payload;
 
-  public TaskPetUpdate(Pet payload) {
+  public PetUpdate(Pet payload) {
     this.payload = payload;
   }
 
   public static Performable withPayload(Pet payload) {
-    return instrumented(TaskPetUpdate.class, payload);
+    return instrumented(PetUpdate.class, payload);
   }
 
   @Override

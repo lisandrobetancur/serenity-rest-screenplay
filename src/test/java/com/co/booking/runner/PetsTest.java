@@ -8,12 +8,12 @@ import static org.hamcrest.Matchers.notNullValue;
 import com.co.models.pets.Category;
 import com.co.models.pets.Pet;
 import com.co.models.pets.Tag;
-import com.co.questions.QuestionGetPets;
-import com.co.questions.QuestionResponseCode;
-import com.co.tasks.TaskAddPet;
-import com.co.tasks.TaskFindPets;
-import com.co.tasks.TaskPartialPetUpdate;
-import com.co.tasks.TaskPetUpdate;
+import com.co.questions.GetPets;
+import com.co.questions.ResponseCode;
+import com.co.tasks.AddPet;
+import com.co.tasks.FindPets;
+import com.co.tasks.PartialPetUpdate;
+import com.co.tasks.PetUpdate;
 import com.co.utils.RandomNumber;
 import java.util.HashMap;
 import java.util.List;
@@ -52,19 +52,19 @@ class PetsTest {
             .status(status)
             .build();
 
-    intern.attemptsTo(TaskAddPet.withPayload(pet));
+    intern.attemptsTo(AddPet.withPayload(pet));
 
-    intern.should(seeThat("the status code", QuestionResponseCode.was(), equalTo(SC_OK)));
+    intern.should(seeThat("the status code", ResponseCode.was(), equalTo(SC_OK)));
   }
 
   @Test
   @Order(2)
   void findPetsByStatus() {
-    intern.attemptsTo(TaskFindPets.byStatus(status));
+    intern.attemptsTo(FindPets.byStatus(status));
 
-    intern.should(seeThat("the status code", QuestionResponseCode.was(), equalTo(SC_OK)));
+    intern.should(seeThat("the status code", ResponseCode.was(), equalTo(SC_OK)));
 
-    List<Pet> pets = new QuestionGetPets().answeredBy(intern);
+    List<Pet> pets = new GetPets().answeredBy(intern);
 
     Pet pet =
         pets.stream()
@@ -95,9 +95,9 @@ class PetsTest {
             .status(status)
             .build();
 
-    intern.attemptsTo(TaskPetUpdate.withPayload(newPet));
+    intern.attemptsTo(PetUpdate.withPayload(newPet));
 
-    intern.should(seeThat("the status code", QuestionResponseCode.was(), equalTo(SC_OK)));
+    intern.should(seeThat("the status code", ResponseCode.was(), equalTo(SC_OK)));
   }
 
   @Test
@@ -107,8 +107,8 @@ class PetsTest {
     params.put("name", "Checho");
     params.put("status", "sold");
 
-    intern.attemptsTo(TaskPartialPetUpdate.withPayload(params, 7937L));
+    intern.attemptsTo(PartialPetUpdate.withPayload(params, 7937L));
 
-    intern.should(seeThat("the status code", QuestionResponseCode.was(), equalTo(SC_OK)));
+    intern.should(seeThat("the status code", ResponseCode.was(), equalTo(SC_OK)));
   }
 }

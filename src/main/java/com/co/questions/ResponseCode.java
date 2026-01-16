@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
 /** A Serenity BDD Question to retrieve the HTTP status code from the last API response. */
-public class QuestionResponseCode implements Question<Integer> {
+public class ResponseCode implements Question<Integer> {
 
   /**
    * Static factory method to create an instance of ResponseCodeQuestion.
@@ -13,7 +13,7 @@ public class QuestionResponseCode implements Question<Integer> {
    * @return A new instance of ResponseCodeQuestion.
    */
   public static Question<Integer> was() {
-    return new QuestionResponseCode();
+    return new ResponseCode();
   }
 
   /**

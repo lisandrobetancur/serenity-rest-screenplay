@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
 /** A Serenity BDD Question to retrieve a list of Pet objects from the last API response. */
-public class QuestionGetPets implements Question<List<Pet>> {
+public class GetPets implements Question<List<Pet>> {
   /**
    * Extracts a list of Pet objects from the last RESTAssured response.
    *

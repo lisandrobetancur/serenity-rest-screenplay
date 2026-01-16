@@ -8,18 +8,18 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 
-public class TaskPartialPetUpdate implements Task {
+public class PartialPetUpdate implements Task {
 
   private final Map<String, String> params;
   private final Long id;
 
-  public TaskPartialPetUpdate(Map<String, String> params, Long id) {
+  public PartialPetUpdate(Map<String, String> params, Long id) {
     this.params = params;
     this.id = id;
   }
 
   public static Performable withPayload(Map<String, String> params, Long id) {
-    return instrumented(TaskPartialPetUpdate.class, params, id);
+    return instrumented(PartialPetUpdate.class, params, id);
   }
 
   @Override

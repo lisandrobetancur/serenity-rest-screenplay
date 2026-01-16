@@ -12,7 +12,7 @@ import net.serenitybdd.screenplay.Task;
  * A Serenity BDD Task to retrieve pets by their status via a GET request to the "pet/findByStatus"
  * endpoint.
  */
-public class TaskFindPets implements Task {
+public class FindPets implements Task {
 
   private final String status;
 
@@ -21,7 +21,7 @@ public class TaskFindPets implements Task {
    *
    * @param status The status of the pet to retrieve.
    */
-  public TaskFindPets(String status) {
+  public FindPets(String status) {
     this.status = status;
   }
 
@@ -32,7 +32,7 @@ public class TaskFindPets implements Task {
    * @return An instrumented Performable task to get pets by status.
    */
   public static Performable byStatus(String status) {
-    return instrumented(TaskFindPets.class, status);
+    return instrumented(FindPets.class, status);
   }
 
   /**

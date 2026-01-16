@@ -39,10 +39,10 @@ class PetsTest extends BaseTest {
     intern.should(seeThat("intern", actor -> pet, notNullValue()));
 
     intern.should(
-            seeThat("the category id", actor -> pet.getCategory().getId(), equalTo(6)),
-            seeThat("the category name", actor -> pet.getCategory().getName(), equalTo("dogs")),
-            seeThat("the pet name", actor -> pet.getName(), equalTo("Sharikk")),
-            seeThat("the photoUrls", actor -> pet.getPhotoUrls(), equalTo("string")),
-            seeThat("the status", actor -> pet.getStatus(), equalTo("sold")));
+        seeThat("the category id", actor -> pet.getCategory().getId(), equalTo(6)),
+        seeThat("the category name", actor -> pet.getCategory().getName(), equalTo("dogs")),
+        seeThat("the pet name", actor -> pet.getName(), equalTo("Sharikk")),
+        seeThat("the photoUrls", actor -> pet.getPhotoUrls(), equalTo("string")),
+        seeThat("the status", actor -> pet.getStatus(), equalTo("sold")));
   }
 }

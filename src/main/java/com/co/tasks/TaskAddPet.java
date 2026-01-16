@@ -13,7 +13,7 @@ import net.serenitybdd.screenplay.Task;
  * Task for creating a new pet in the system. This task uses a Pet payload to send a POST request to
  * the "pet" endpoint.
  */
-public class TaskCreateBooking implements Task {
+public class TaskAddPet implements Task {
 
   private final Pet payload;
 
@@ -22,7 +22,7 @@ public class TaskCreateBooking implements Task {
    *
    * @param payload The {@link Pet} object containing the details for the new pet.
    */
-  public TaskCreateBooking(Pet payload) {
+  public TaskAddPet(Pet payload) {
     this.payload = payload;
   }
 
@@ -33,7 +33,7 @@ public class TaskCreateBooking implements Task {
    * @return A {@link Performable} task ready to be executed by an {@link Actor}.
    */
   public static Performable withPayload(Pet payload) {
-    return instrumented(TaskCreateBooking.class, payload);
+    return instrumented(TaskAddPet.class, payload);
   }
 
   /**

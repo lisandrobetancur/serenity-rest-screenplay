@@ -1,6 +1,6 @@
 package com.co.questions;
 
-import com.co.models.pets.response.Pet;
+import com.co.models.pets.Pet;
 import io.restassured.common.mapper.TypeRef;
 import java.util.List;
 import net.serenitybdd.rest.SerenityRest;

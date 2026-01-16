@@ -2,43 +2,43 @@ package com.co.tasks;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-import com.co.models.bookings.Booking;
+import com.co.interactions.Post;
+import com.co.models.pets.Pet;
 import io.restassured.http.ContentType;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.rest.interactions.Post;
 
 /**
- * Task for creating a new booking in the system.
- * This task uses a Booking payload to send a POST request to the "booking" endpoint.
+ * Task for creating a new pet in the system. This task uses a Pet payload to send a POST request to
+ * the "pet" endpoint.
  */
 public class TaskCreateBooking implements Task {
 
-  private final Booking payload;
+  private final Pet payload;
 
   /**
-   * Constructs a TaskCreateBooking with the specified booking payload.
+   * Constructs a TaskCreateBooking with the specified pet payload.
    *
-   * @param payload The {@link Booking} object containing the details for the new booking.
+   * @param payload The {@link Pet} object containing the details for the new pet.
    */
-  public TaskCreateBooking(Booking payload) {
+  public TaskCreateBooking(Pet payload) {
     this.payload = payload;
   }
 
   /**
    * Creates an instrumented instance of TaskCreateBooking with the provided payload.
    *
-   * @param payload The {@link Booking} object to be used as the request body.
+   * @param payload The {@link Pet} object to be used as the request body.
    * @return A {@link Performable} task ready to be executed by an {@link Actor}.
    */
-  public static Performable withPayload(Booking payload) {
+  public static Performable withPayload(Pet payload) {
     return instrumented(TaskCreateBooking.class, payload);
   }
 
   /**
-   * Performs the task of creating a booking as the given actor.
-   * The actor attempts to send a POST request with the booking payload.
+   * Performs the task of creating a pet as the given actor. The actor attempts to send a POST
+   * request with the pet payload.
    *
    * @param actor The {@link Actor} performing the task.
    * @param <T> A type that extends {@link Actor}.
@@ -46,7 +46,7 @@ public class TaskCreateBooking implements Task {
   @Override
   public <T extends Actor> void performAs(T actor) {
     actor.attemptsTo(
-        Post.to("booking")
+        Post.to("/pet")
             .with(
                 requestSpecification ->
                     requestSpecification.contentType(ContentType.JSON).body(payload)));

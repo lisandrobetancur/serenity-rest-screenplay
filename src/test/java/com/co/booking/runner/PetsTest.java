@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 import com.co.base.BaseTest;
-import com.co.models.pets.response.Pet;
+import com.co.models.pets.Pet;
 import com.co.questions.QuestionGetPets;
 import com.co.questions.QuestionResponseCode;
 import com.co.tasks.TaskFindPets;
@@ -22,25 +22,27 @@ class PetsTest extends BaseTest {
 
   @Test
   void findPetsByStatus() {
-    Actor user = Actor.named("Juanito the intern").whoCan(CallAnApi.at(restApiUrl));
+    Actor intern = Actor.named("Juanito the intern").whoCan(CallAnApi.at(restApiUrl));
 
-    user.attemptsTo(TaskFindPets.byStatus("sold"));
+    intern.attemptsTo(TaskFindPets.byStatus("sold"));
 
-    user.should(seeThat("the status code", QuestionResponseCode.was(), equalTo(SC_OK)));
+    intern.should(seeThat("the status code", QuestionResponseCode.was(), equalTo(SC_OK)));
 
-    List<Pet> pets = new QuestionGetPets().answeredBy(user);
+    List<Pet> pets = new QuestionGetPets().answeredBy(intern);
 
     Pet pet =
         pets.stream()
             .filter(p -> p.getId() == 690)
             .findFirst()
-            .orElseThrow(() -> new RuntimeException("Pet ID not found")); // Handle missing data
+            .orElseThrow(() -> new RuntimeException("Pet ID not found"));
 
-    user.should(seeThat("user", actor -> pet, notNullValue()));
+    intern.should(seeThat("intern", actor -> pet, notNullValue()));
 
-    user.should(
-        seeThat("the category id", actor -> pet.getCategory().getId(), equalTo(6)),
-        seeThat("the name", actor -> pet.getName(), equalTo("Sharikk")),
-        seeThat("the status", actor -> pet.getStatus(), equalTo("sold")));
+    intern.should(
+            seeThat("the category id", actor -> pet.getCategory().getId(), equalTo(6)),
+            seeThat("the category name", actor -> pet.getCategory().getName(), equalTo("dogs")),
+            seeThat("the pet name", actor -> pet.getName(), equalTo("Sharikk")),
+            seeThat("the photoUrls", actor -> pet.getPhotoUrls(), equalTo("string")),
+            seeThat("the status", actor -> pet.getStatus(), equalTo("sold")));
   }
 }

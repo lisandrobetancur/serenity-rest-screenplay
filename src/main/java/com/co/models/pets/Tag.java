@@ -1,4 +1,4 @@
-package com.co.models.pets.response;
+package com.co.models.pets;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

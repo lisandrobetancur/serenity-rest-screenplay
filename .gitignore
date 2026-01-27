@@ -38,4 +38,3 @@ build/
 
 ### Logs ###
 *.log
-/src/main/resources/logback.xml

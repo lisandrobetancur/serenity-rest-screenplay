@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 /** Represents a pet. */
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 @Data
 public class Pet {
 

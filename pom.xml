@@ -24,6 +24,7 @@
         <lombok.version>1.18.36</lombok.version>
         <goole_guava.version>33.5.0-jre</goole_guava.version>
         <logback.version>1.5.25</logback.version>
+        <cucumber.version>7.33.0</cucumber.version>
         <parallel.tests>4</parallel.tests>
     </properties>
 
@@ -118,6 +119,22 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Cucumber JUnit Platform Engine -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JUnit Platform Suite -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
